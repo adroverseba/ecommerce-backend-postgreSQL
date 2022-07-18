@@ -1,0 +1,47 @@
+# en este archivo se encuentran las configuraciones de docker
+# version del yamel en el que va a ser tratado este proceso, no es la de docker
+version: "3.3"
+
+# colocamos los servicios donde nos queremos conectar
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=my_store
+      - POSTGRES_USER=seba
+      - POSTGRES_PASSWORD=admin123
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 5050:80
+
+  mysql:
+    image: mysql:5
+    environment:
+      - MYSQL_DATABASE=my_store
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_PORT=3307
+    ports:
+      - 3307:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - PMA_HOST=mysql
+    ports:
+      - 8080:80
+# image es donde indicamos la version de postgres, en este caso es la 13
+# environment son las variables de entorno que de manera predeterminada vienen en la conf
+# ports es la configuracion de los puertos que usara docker
