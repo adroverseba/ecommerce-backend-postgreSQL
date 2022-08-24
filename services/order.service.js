@@ -12,8 +12,16 @@ class OrderService {
     return [];
   }
 
+  //resuelvo un anidamiento trayendo la association incluyendome la association user
   async findOne(id) {
-    const order = await models.Order.findByPk(id);
+    const order = await models.Order.findByPk(id, {
+      include: [
+        {
+          association: 'customer',
+          include: ['user'],
+        },
+      ],
+    });
     return order;
   }
 
