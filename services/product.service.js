@@ -1,48 +1,43 @@
-const faker = require('faker');
+// const faker = require('faker');
 const boom = require('@hapi/boom');
 
-const sequelize = require('../libs/sequelize');
+const { models } = require('../libs/sequelize');
 
 class ProductsService {
   constructor() {
-    this.products = [];
-    this.generate();
+    // this.generate();
     // this.pool = pool;
     // this.pool.on('error', (err) => console.log(err)); //esto nos sirve para que podamos escuchar el evento error e imprimirlo por la consola si algo sale mal
   }
 
-  generate() {
-    const limit = 100;
-    for (let index = 0; index < limit; index++) {
-      this.products.push({
-        id: faker.datatype.uuid(),
-        name: faker.commerce.productName(),
-        price: parseInt(faker.commerce.price(), 10),
-        image: faker.image.imageUrl(),
-        isBlock: faker.datatype.boolean(),
-      });
-    }
-  }
+  // generate() {
+  //   const limit = 100;
+  //   for (let index = 0; index < limit; index++) {
+  //     this.products.push({
+  //       id: faker.datatype.uuid(),
+  //       name: faker.commerce.productName(),
+  //       price: parseInt(faker.commerce.price(), 10),
+  //       image: faker.image.imageUrl(),
+  //       isBlock: faker.datatype.boolean(),
+  //     });
+  //   }
+  // }
 
   async create(data) {
-    const newProduct = {
-      id: faker.datatype.uuid(),
-      ...data,
-    };
-    this.products.push(newProduct);
+    const newProduct = await models.Product.create(data);
     return newProduct;
   }
 
+  //uso el alias creado en el modelo del product - recordar que puedo tener mas de una asociasion dentro del array del find
   async find() {
-    const query = 'SELECT * FROM tasks';
-    const [data] = await sequelize.query(query); //sequelize devuelve la informacion en forma de data y metadata, todo esto dentro de un array.Por eso se coloca data entre llaves.
+    const products = await models.Product.findAll({ include: ['category'] }); //sequelize devuelve la informacion en forma de data y metadata, todo esto dentro de un array.Por eso se coloca data entre llaves.
     // const rta = await this.pool.query(query);
     // return rta.rows;
-    return data;
+    return products;
   }
 
   async findOne(id) {
-    const product = this.products.find((item) => item.id === id);
+    const product = await models.Product.findOne(id);
     if (!product) {
       throw boom.notFound('product not found');
     }
@@ -53,25 +48,25 @@ class ProductsService {
   }
 
   async update(id, changes) {
-    const index = this.products.findIndex((item) => item.id === id);
-    if (index === -1) {
-      throw boom.notFound('product not found');
-    }
-    const product = this.products[index];
-    this.products[index] = {
-      ...product,
-      ...changes,
-    };
-    return this.products[index];
+    // const index = this.products.findIndex((item) => item.id === id);
+    // if (index === -1) {
+    //   throw boom.notFound('product not found');
+    // }
+    // const product = this.products[index];
+    // this.products[index] = {
+    //   ...product,
+    //   ...changes,
+    // };
+    // return this.products[index];
   }
 
   async delete(id) {
-    const index = this.products.findIndex((item) => item.id === id);
-    if (index === -1) {
-      throw boom.notFound('product not found');
-    }
-    this.products.splice(index, 1);
-    return { id };
+    // const index = this.products.findIndex((item) => item.id === id);
+    // if (index === -1) {
+    //   throw boom.notFound('product not found');
+    // }
+    // this.products.splice(index, 1);
+    // return { id };
   }
 }
 
