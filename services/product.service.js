@@ -29,8 +29,19 @@ class ProductsService {
   }
 
   //uso el alias creado en el modelo del product - recordar que puedo tener mas de una asociasion dentro del array del find
-  async find() {
-    const products = await models.Product.findAll({ include: ['category'] }); //sequelize devuelve la informacion en forma de data y metadata, todo esto dentro de un array.Por eso se coloca data entre llaves.
+  async find(query) {
+    const options = {
+      include: ['category'],
+    };
+    //obtengo offset y limit de la query necesarios para la paginacion
+    const { offset, limit } = query;
+    if (offset && limit) {
+      options.offset = offset;
+      options.limit = limit;
+    }
+    const products = await models.Product.findAll(options);
+
+    //sequelize devuelve la informacion en forma de data y metadata, todo esto dentro de un array.Por eso se coloca data entre llaves.
     // const rta = await this.pool.query(query);
     // return rta.rows;
     return products;
