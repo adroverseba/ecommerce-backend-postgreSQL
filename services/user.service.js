@@ -1,6 +1,7 @@
 const boom = require('@hapi/boom');
-
+const bcrypt = require('bcrypt');
 const { models } = require('../libs/sequelize');
+
 // const getConnection = require('../libs/postgres'); esto no es la mejor opcion
 // const pool = require('../libs/postgres.pool');
 
@@ -8,7 +9,15 @@ class UserService {
   constructor() {}
 
   async create(data) {
-    const newUser = await models.User.create(data);
+    const hash = await bcrypt.hash(data.password, 10);
+    const newUser = await models.User.create({
+      ...data,
+      password: hash,
+    });
+
+    // console.log(newUser);
+    // console.log(newUser.dataValues);
+    delete newUser.dataValues.password;
     return newUser;
   }
 
