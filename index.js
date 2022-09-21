@@ -25,7 +25,11 @@ const options = {
     }
   },
 };
+
 app.use(cors(options));
+//importacion de la logica de passport ANTES DE Routing
+require('./utils/auth');
+routerApi(app);
 
 app.get('/', (req, res) => {
   res.send('Hola mi server en express');
@@ -34,8 +38,6 @@ app.get('/', (req, res) => {
 app.get('/nueva-ruta', checkApiKey, (req, res) => {
   res.send('Hola, soy una nueva ruta');
 });
-
-routerApi(app);
 
 app.use(logErrors);
 app.use(ormErrorHandler);
