@@ -7,6 +7,7 @@ const phone = Joi.string();
 const userId = Joi.number().integer(); //esto se usaba antes cuando solo se mandaba el id de la tabala usuario
 const email = Joi.string().email();
 const password = Joi.string();
+const role = Joi.string();
 
 const createCustomerSchema = Joi.object({
   name: name.required(),
@@ -16,6 +17,7 @@ const createCustomerSchema = Joi.object({
   user: Joi.object({
     email: email.required(),
     password: password.required(),
+    role: role,
   }),
 });
 
