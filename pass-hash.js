@@ -1,8 +1,15 @@
 const bcrypt = require('bcrypt');
 
 async function hashPassword() {
-  const myPassword = 'password adr 623';
-  const hash = await bcrypt.hash(myPassword, 10);
+  const saltRounds = 10;
+  const myPlaintextPassword = 's0/P4$$w0rD';
+
+  const salt = await bcrypt.genSalt(saltRounds);
+  const hash = await bcrypt.hash(myPlaintextPassword, salt);
+
+  // const myPassword = 'password adr 623';
+  // const hash = await bcrypt.hash(myPassword, 10);
+  console.log(salt);
   console.log(hash);
 }
 
