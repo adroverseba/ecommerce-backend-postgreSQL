@@ -2,6 +2,7 @@ require('dotenv').config(); //con esto se carga las variables de .env en el proc
 
 const config = {
   env: process.env.NODE_ENV || 'development',
+  isProd: process.env.NODE_ENV === 'production',
   port: process.env.PORT || 3000,
   dbUser: process.env.DB_USER || 'seba',
   dbPassword: process.env.DB_PASSWORD,
@@ -12,6 +13,7 @@ const config = {
   jwtSecret: process.env.JWT_SECRET,
   smtpEmail: process.env.SMTP_EMAIL,
   smtpPassword: process.env.SMTP_PASSWORD,
+  dbUrl: process.env.DATABASE_URL,
 };
 
 module.exports = { config };
