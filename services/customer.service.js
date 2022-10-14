@@ -21,11 +21,16 @@ class CustomerService {
   }
 
   async create(data) {
-    const hash = await bcrypt.hash(data.user.password, 10);
-    //TODO: falta condicion para cuando el valor que ingresa viene con userId
-    // if () {
+    //* si solo ingresa el id del usuario correspondiente al customer a crear
+    if (data.userId) {
+      const newCustomer = await models.Customer.create(data);
+      console.log(newCustomer);
+      return newCustomer;
+    }
 
-    // }
+    //* si ingresa con el objeto user junto con la creacion de customer
+    const hash = await bcrypt.hash(data.user.password, 10);
+
     const newData = {
       ...data,
       user: {

@@ -14,7 +14,13 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 
 ## Routes
 
-#### 1. El router base _'/api/v1/products'_ implementa las siguientes funcionalidades:
+#### 1. El router base _'/api/v1/auth'_ ejecuta diferentes acciones en los siguientes endpoint:
+
+- `POST: '/login'` - genera login de usuario previamente cargado desde las routes de **user**, al mismo se le debera pasar _email_ y _password_ en el body de la request, en la response de este endpoint se otorgara un **token** de acceso a las rutas protegidas
+- `POST: '/recovery'` - al pasar el correo electronico al cual se le quiere cambiar la contraseña de login, se recibira al mismo un link el cual contiene el token necesario para restablecer la constrasenha
+- `POST: '/change-password'` - por medio de este endpoint pasandole el token y newPassword se podra realizar el cambio de contrasenha
+
+#### 2. El router base _'/api/v1/products'_ implementa las siguientes funcionalidades:
 
 - `GET: '/'` - permite listar todos los productos disponibles siendo posible realizar paginacion y filtrado por **query params** colocando valores para _limit y offset_, _price_, _price_min_ y _price_max_.
   - ejemplo de Request URL:
@@ -26,7 +32,7 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 - `PATCH: '/:id'` - Para realizar un update con informacion parcial del producto
 - `DELETE: '/:id'` - Borra un producto por su id
 
-#### 2. El router base _'/api/v1/users'_:
+#### 3. El router base _'/api/v1/users'_:
 
 - `GET: '/'` - Lista los ususarios
 - `GET: '/:id'` - Muestra un usuario por su id
@@ -34,16 +40,35 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 - `PATCH: '/:id'` - Para realizar un update con informacion del usuario. **No esta permitido** hacer la modificacion de password ni role por medio de este endpoint
 - `DELETE: '/:id'` - Borrado de usuario. Tener en cuenta la relacion con la tabla _customers_
 
-#### 3. El router base _'/api/v1/categories'_:
+#### 4. El router base _'/api/v1/categories'_:
 
 - `GET: '/'` - Lista las categorias
 - `GET: '/:id'` - Muestra categoria filtrada por su numero de id, la categoria seleccionada tambien retornara la asociacion debida a los productos contenidos dentro de si misma.
-- `POST: '/'` - Genera el registro de una categoria
+- `POST: '/'` - Genera el registro de una categoria, esta es una ruta protegida por lo que se le debe pasar el **token** generado en el **login**
 
-#### 4. El router base _'/api/v1/customers'_:
+#### 5. El router base _'/api/v1/customers'_:
 
 - `GET: '/'` - Lista los customers, los valores retornados ademas cuentan con las asociaciones a la tabla users
-- `POST: '/'` - Genera el registro de un customer junto con el , en el body de la request debe ser enviado tambien informacion del usuario
+- `POST: '/'` - Genera el registro de un customer pasandole en el body un _userId_ ya existente
+- `POST: '/'` - Para crear un customer junto con un usuario nuevo, para esto en lugar de pasar un _userId_, se debe pasar _"user"_ en el body junto con su email y password
+- `DELETE: '/:id'` - Borra un customer por id
+
+#### 6. El router base _'/api/v1/orders'_:
+
+- `GET: '/'` - Lista todas las orders
+- `POST: '/'` - Crea un order haciendo uso del token que se le debera pasar, de este mismo se extrae el sub del payload
+- `POST: '/add-item'` - Agrega un Item al orders, ejemplo del schema:
+  ```console
+  {
+    "orderId":7,
+    "productId":2,
+    "amount":2
+  }
+  ```
+
+#### 7. El router base _'/api/v1/profile'_:
+
+- `GET: '/my-orders'` - Esta ruta otorga la orden de compra con todos los productos del cliente, al ser esta una ruta protegida debe de ser pasado el **token** otorgado al momento de realizar el login en el _header_ de la _request_
 
 ## Deploy en Heroku
 

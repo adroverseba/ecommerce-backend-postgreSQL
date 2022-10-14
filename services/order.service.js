@@ -24,7 +24,8 @@ class OrderService {
   }
 
   async find() {
-    return [];
+    const orders = await models.Order.findAll();
+    return orders;
   }
 
   //resuelvo un anidamiento trayendo la association incluyendome la association user
