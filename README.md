@@ -74,6 +74,14 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 
 🔗[e-commerce](https://enigmatic-journey-93971.herokuapp.com/)
 
+## Como usarlo
+
+Para realizar la prueba de cada uno de los endpoints anteriormente mencionados, se puede usar _postman_, _insomnia_ o cualquier _cliente REST_ para facilitar las consultas a dicha API REST
+
+```console
+https://enigmatic-journey-93971.herokuapp.com/
+```
+
 ## Estado
 
 Frontend y doc. con Swagger en desarrollo... 👨🏻‍💻⏳🛠️🚧
