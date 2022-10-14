@@ -44,6 +44,9 @@ class UserService {
   async update(id, changes) {
     // const user = await models.User.findByPk(id); //*ahorramos codigo y  lo reutilizamos por eso pongo la siguiente linea
     const user = await this.findOne(id);
+    if (changes.role) {
+      throw boom.badRequest('"role" is not allowed');
+    }
     const rta = await user.update(changes);
     return rta;
   }

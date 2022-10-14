@@ -22,6 +22,10 @@ class CustomerService {
 
   async create(data) {
     const hash = await bcrypt.hash(data.user.password, 10);
+    //TODO: falta condicion para cuando el valor que ingresa viene con userId
+    // if () {
+
+    // }
     const newData = {
       ...data,
       user: {
