@@ -84,7 +84,8 @@ https://enigmatic-journey-93971.herokuapp.com/
 
 ## DER de la base de datos utilizada
 
-![](https://drive.google.com/file/d/1XTXpHl6QewMfl-zrjJrHTbTvX0kcaKy1/view?pli=1)
+![der](./derAPIrest.png)
+🔗[enlace a imagen - drive](https://drive.google.com/file/d/1XTXpHl6QewMfl-zrjJrHTbTvX0kcaKy1/view?pli=1)
 
 ## Estado
 
