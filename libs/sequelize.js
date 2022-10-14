@@ -12,10 +12,12 @@ const options = {
   logging: config.isProd ? false : true,
 };
 
-//si estoy en un entorno de produccion agrego las conf de ssl
+//si estoy en un entorno de produccion agrego las conf de ssl en dialect options
 if (config.isProd) {
-  options.ssl = {
-    rejectUnauthorized: false,
+  options.dialectOptions = {
+    ssl: {
+      rejectUnauthorized: false,
+    },
   };
 }
 
