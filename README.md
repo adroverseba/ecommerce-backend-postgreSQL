@@ -82,6 +82,10 @@ Para realizar la prueba de cada uno de los endpoints anteriormente mencionados, 
 https://enigmatic-journey-93971.herokuapp.com/
 ```
 
+## DER de la base de datos utilizada
+
+![](https://drive.google.com/file/d/1XTXpHl6QewMfl-zrjJrHTbTvX0kcaKy1/view?pli=1)
+
 ## Estado
 
 Frontend y doc. con Swagger en desarrollo... 👨🏻‍💻⏳🛠️🚧
