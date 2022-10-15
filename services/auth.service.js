@@ -29,7 +29,7 @@ class AuthService {
       sub: user.id,
       role: user.role,
     };
-    const token = jwt.sign(payload, config.jwtSecret, { expiresIn: 60 * 15 });
+    const token = jwt.sign(payload, config.jwtSecret, { expiresIn: 60 * 30 });
 
     return { user, token };
   }
@@ -46,11 +46,11 @@ class AuthService {
     await service.update(user.id, { recoveryToken: token });
 
     const mail = {
-      from: `"Fred Foo 👻" <${config.smtpEmail}>`, // sender address
+      from: `"e-commerce 🛍️" <${config.smtpEmail}>`, // sender address
       to: `lonzo.cassin32@ethereal.email, ${email}`, // list of receivers
-      subject: 'Este es un nuevo correo', // Subject line
+      subject: 'Restablecimiento de contraseña', // Subject line
       text: `Hello ${user.name}`, // plain text body
-      html: `<b>Ingresa a este link: ${link}</b>`, // html body
+      html: `<b>Para restablecer tu contraseña ingresa a este link: ${link}</b>`, // html body
     };
     const rta = await this.sendMail(mail);
     return rta;
@@ -58,9 +58,9 @@ class AuthService {
 
   async sendMail(infoMail) {
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      secure: false, // true for 465, false for other ports
-      port: 587,
+      host: 'smtp.gmail.com',
+      secure: true, // true for 465, false for other ports
+      port: 465,
       auth: {
         user: config.smtpEmail,
         pass: config.smtpPassword,
