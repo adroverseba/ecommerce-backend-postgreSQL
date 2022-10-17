@@ -18,7 +18,7 @@ app.use(express.json());
 const whitelist = [
   'http://localhost:8080',
   'https://myapp.co',
-  'https://adroverseba.github.io/',
+  'https://adroverseba.github.io/react-super-shop-ecommerce',
 ];
 const options = {
   origin: (origin, callback) => {
