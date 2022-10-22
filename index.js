@@ -21,6 +21,7 @@ const whitelist = [
   'https://adroverseba.github.io',
   'https://adroverseba.github.io/react-super-shop-ecommerce',
   'https://adroverseba.github.io/react-super-shop-ecommerce/',
+  'http://localhost:3000',
 ];
 const options = {
   origin: (origin, callback) => {
