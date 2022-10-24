@@ -20,10 +20,9 @@ const whitelist = [
   'https://myapp.co',
   'https://adroverseba.github.io',
   'https://adroverseba.github.io/react-super-shop-ecommerce',
-  'https://adroverseba.github.io/react-super-shop-ecommerce/',
   'http://localhost:3000',
   'https://frogshop-ecommerce.vercel.app',
-  'https://sebaadrover.dev/',
+  'https://sebaadrover.dev',
 ];
 const options = {
   origin: (origin, callback) => {
