@@ -94,7 +94,7 @@ El siguiente link corresponde al **deploy del backend** realizado en **Heroku** 
 El front de la misma es realizado en **Next.js**, acontinuacion se dejan los enlaces del **codigo** y el **deploy** de la app ya conectada con este backend
 <br>
 
-**codigo** del **front** ecommerce con NextJS -> 🔗[FrogShop FRONT](https://github.com/adroverseba/react-super-shop-ecommerce) <br>
+**codigo** del **front** ecommerce con NextJS -> 🔗[FrogShop FRONT](https://github.com/adroverseba/frogshop-ecommerce) <br>
 **app completa** con deployment en Vercel -> 🔗[FrogShop APP](https://frogshop-ecommerce.vercel.app)
 
 ## Estado
