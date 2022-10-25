@@ -72,7 +72,17 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 
 ## Deploy en Heroku
 
-🔗[e-commerce](https://enigmatic-journey-93971.herokuapp.com/)
+El siguiente link corresponde al deploy del backend realizado en Heroku donde se pueden realizar consultas a cada uno de los endpoint anteriormente detallados usando algun cliente REST, por ejemplo
+
+🔗[e-commerce Backend](https://enigmatic-journey-93971.herokuapp.com/)
+
+## Frontend
+
+El front de la misma es realizado en **Next.js**, acontinuacion se dejan los enlaces del **codigo** y el **deploy** de la app ya conectada con este backend
+<br>
+
+**codigo** del **front** ecommerce con NextJS -> 🔗[FrogShop FRONT](https://github.com/adroverseba/react-super-shop-ecommerce) <br>
+**app completa** con deployment en Vercel -> 🔗[FrogShop APP](https://frogshop-ecommerce.vercel.app)
 
 ## Como usarlo
 
@@ -90,4 +100,7 @@ https://enigmatic-journey-93971.herokuapp.com/
 ## Estado
 
 Frontend y doc. con Swagger en desarrollo... 👨🏻‍💻⏳🛠️🚧 <br>
-🐸 Front -> [FrogShop](https://github.com/adroverseba/react-super-shop-ecommerce)
+
+## <br>
+
+###### _Realizado con mucho ❤️ by adroverseba_
