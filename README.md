@@ -70,20 +70,6 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 
 - `GET: '/my-orders'` - Esta ruta otorga la orden de compra con todos los productos del cliente, al ser esta una ruta protegida debe de ser pasado el **token** otorgado al momento de realizar el login en el _header_ de la _request_
 
-## Deploy en Heroku
-
-El siguiente link corresponde al deploy del backend realizado en Heroku donde se pueden realizar consultas a cada uno de los endpoint anteriormente detallados usando algun cliente REST, por ejemplo
-
-🔗[e-commerce Backend](https://enigmatic-journey-93971.herokuapp.com/)
-
-## Frontend
-
-El front de la misma es realizado en **Next.js**, acontinuacion se dejan los enlaces del **codigo** y el **deploy** de la app ya conectada con este backend
-<br>
-
-**codigo** del **front** ecommerce con NextJS -> 🔗[FrogShop FRONT](https://github.com/adroverseba/react-super-shop-ecommerce) <br>
-**app completa** con deployment en Vercel -> 🔗[FrogShop APP](https://frogshop-ecommerce.vercel.app)
-
 ## Como usarlo
 
 Para realizar la prueba de cada uno de los endpoints anteriormente mencionados, se puede usar _postman_, _insomnia_ o cualquier _cliente REST_ para facilitar las consultas a dicha API REST
@@ -97,10 +83,24 @@ https://enigmatic-journey-93971.herokuapp.com/
 ![der](./derAPIrest.png)
 🔗[enlace a imagen - drive](https://drive.google.com/file/d/1XTXpHl6QewMfl-zrjJrHTbTvX0kcaKy1/view?pli=1)
 
+## Deploy en Heroku
+
+El siguiente link corresponde al **deploy del backend** realizado en **Heroku** donde se pueden realizar consultas a cada uno de los endpoint anteriormente detallados usando algun _cliente REST_, por ejemplo
+
+🔗[e-commerce Backend](https://enigmatic-journey-93971.herokuapp.com/)
+
+## Frontend
+
+El front de la misma es realizado en **Next.js**, acontinuacion se dejan los enlaces del **codigo** y el **deploy** de la app ya conectada con este backend
+<br>
+
+**codigo** del **front** ecommerce con NextJS -> 🔗[FrogShop FRONT](https://github.com/adroverseba/react-super-shop-ecommerce) <br>
+**app completa** con deployment en Vercel -> 🔗[FrogShop APP](https://frogshop-ecommerce.vercel.app)
+
 ## Estado
 
 Frontend y doc. con Swagger en desarrollo... 👨🏻‍💻⏳🛠️🚧 <br>
 
-## <br>
+<br>
 
 ###### _Realizado con mucho ❤️ by adroverseba_
