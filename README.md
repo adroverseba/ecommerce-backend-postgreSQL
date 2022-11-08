@@ -17,8 +17,30 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 #### 1. El router base _'/api/v1/auth'_ ejecuta diferentes acciones en los siguientes endpoint:
 
 - `POST: '/login'` - genera login de usuario previamente cargado desde las routes de **user**, al mismo se le debera pasar _email_ y _password_ en el body de la request, en la response de este endpoint se otorgara un **token** de acceso a las rutas protegidas
+
+```console
+{
+	"email":"string",
+	"password":"string"
+}
+```
+
 - `POST: '/recovery'` - al pasar el correo electronico al cual se le quiere cambiar la contraseña de login, se recibira al mismo un link el cual contiene el token necesario para restablecer la constrasenha
+
+```console
+{
+	"email":"adroversebastian.sa@gmail.com"
+}
+```
+
 - `POST: '/change-password'` - por medio de este endpoint pasandole el token y newPassword se podra realizar el cambio de contrasenha
+
+```console
+{
+  "token":"string",
+	"newPassword":"string"
+}
+```
 
 #### 2. El router base _'/api/v1/products'_ implementa las siguientes funcionalidades:
 
@@ -28,7 +50,18 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
     https://enigmatic-journey-93971.herokuapp.com/api/v1/products?limit=5&offset=0
     ```
 - `GET: '/:id'` - Permite listar un producto por su id
-- `POST: '/'` - Para incorporar productos al listado(se necesita primero tener creada una categoria de productos)
+- `POST: '/'` - Para incorporar productos al listado(los valores de categoryId solo pueden ser valores comprendidos entre 1 y 4 inclusive)
+
+```console
+{
+	"name":"string",
+	"price":0,
+	"description":"string",
+	"image": "string",
+	"categoryId":0
+}
+```
+
 - `PATCH: '/:id'` - Para realizar un update con informacion parcial del producto
 - `DELETE: '/:id'` - Borra un producto por su id
 
@@ -36,7 +69,16 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 
 - `GET: '/'` - Lista los ususarios
 - `GET: '/:id'` - Muestra un usuario por su id
-- `POST: '/'` - Genera el registro de un usuario, el valor por defecto de role es 'customer'
+- `POST: '/'` - Genera el registro de un usuario, el valor por defecto de role es 'customer', pero tambien puede ser **"admin"** y **"seller"** siendo estos dos ultimos los **recomendados para poder usar todas las rutas protegidas**
+
+```console
+{
+	"email":"string",
+	"password":"string",
+	"role":"string"
+}
+```
+
 - `PATCH: '/:id'` - Para realizar un update con informacion del usuario. **No esta permitido** hacer la modificacion de password ni role por medio de este endpoint
 - `DELETE: '/:id'` - Borrado de usuario. Tener en cuenta la relacion con la tabla _customers_
 
@@ -46,11 +88,41 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 - `GET: '/:id'` - Muestra categoria filtrada por su numero de id, la categoria seleccionada tambien retornara la asociacion debida a los productos contenidos dentro de si misma.
 - `POST: '/'` - Genera el registro de una categoria, esta es una ruta protegida por lo que se le debe pasar el **token** generado en el **login**
 
+```console
+{
+	"name":"string",
+	"image":"string"
+}
+```
+
 #### 5. El router base _'/api/v1/customers'_:
 
 - `GET: '/'` - Lista los customers, los valores retornados ademas cuentan con las asociaciones a la tabla users
 - `POST: '/'` - Genera el registro de un customer pasandole en el body un _userId_ ya existente
+
+```console
+{
+	"name":"string",
+	"lastName":"string",
+	"phone":"string",
+	"userId":0
+}
+```
+
 - `POST: '/'` - Para crear un customer junto con un usuario nuevo, para esto en lugar de pasar un _userId_, se debe pasar _"user"_ en el body junto con su email y password
+
+```console
+{
+	"name":"string",
+	"lastName":"string",
+	"phone":"string",
+	"user":{
+		"email":"string",
+		"password":"string"
+	}
+}
+```
+
 - `DELETE: '/:id'` - Borra un customer por id
 
 #### 6. El router base _'/api/v1/orders'_:
@@ -60,9 +132,9 @@ En el mismo se da solucion a diversos problemas del lado del backend como:
 - `POST: '/add-item'` - Agrega un Item al orders, ejemplo del schema:
   ```console
   {
-    "orderId":7,
-    "productId":2,
-    "amount":2
+    "orderId":0,
+    "productId":0,
+    "amount":0
   }
   ```
 
